@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Welcome from '../components/footer'
-import {Rnd} from 'react-rnd'
+import { Rnd } from 'react-rnd'
 
 export default function Home() {
   return (
@@ -9,90 +9,40 @@ export default function Home() {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <div class="flex w-full bg-black text-white">
+        <div class="p-1 pl-4 text-sm w-24" onclick="showmenu()">Start</div>
+        <div class="w-40 bg-gray-800 p-1 pl-4 text-sm ml-8 text-white">Notepad</div>
+        <div class="w-40 bg-gray-700 p-1 pl-4 text-sm text-white">Taschenrechner</div>
+      </div>
+      <main class=" bg-cover w-screen h-screen relative" style={{ backgroundImage: 'url(https://4kwallpapers.com/images/walls/thumbs_3t/1432.jpg)' }}>
+        <div class="absolute left-0 bg-black w-24" id="menu" >
+          <div class="text-white text-sm p-1 pl-4">Notepad</div>
+          <div class="text-white text-sm p-1 pl-4">Taschenrechner</div>
+        </div>
 
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        <Welcome name="John3" />
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
         <Rnd
-        dragHandleClassName="handli"
-  default={{
-    x: 0,
-    y: 0,
-    width: 320,
-    height: 200,
-  }}
->
-<div class="border w-full h-full bg-blue-100">
-
-  <div class="handli">Rnd</div>
-        <p className="mt-3 text-2xl bg-red-100 border-2 ">
-          Get started by editing{' '}
-          <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
-            pages/index.js
-          </code>
-        </p>
-        </div>
-        </Rnd>
-
-        <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className="flex items-center justify-center w-full h-24 border-t">
-        <a
-          className="flex items-center justify-center"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          dragHandleClassName="handli"
+          default={{
+            x: 0,
+            y: 0,
+            width: 320,
+            height: 250,
+          }}
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
-        </a>
-      </footer>
+          <div class="border-2 w-full h-full flex flex-col bg-blue-100">
+
+            <div class=" bg-gray-200 text-sm p-1 justify-between z-100 flex">
+              <div>Menu</div>
+              <div class="text-gray-500 handli">Notepad</div>
+              <div class="flex">
+                <div class="bg-yellow-300 w-4 h-4 rounded-full"></div>
+                <div class="mx-2 bg-green-300 w-4 h-4 rounded-full"></div>
+                <div class="bg-red-300 w-4 h-4 rounded-full"></div>
+              </div>
+            </div>            <textarea class="flex-1 h-full bg-white w-full resize-none p-1 focus:outline-none">sdf</textarea>
+          </div>
+        </Rnd>
+      </main>
     </div>
   )
 }
