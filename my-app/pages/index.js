@@ -27,7 +27,6 @@ export default function Home() {
           <div className="text-white text-sm p-1 pl-4">Notepad</div>
           <div className="text-white text-sm p-1 pl-4">Taschenrechner</div>
         </div>
-
         <Rnd
           dragHandleclassName="handli"
           default={{
