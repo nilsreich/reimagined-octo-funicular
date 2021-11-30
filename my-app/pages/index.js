@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import MarkdownEditor from '../components/footer'
 import Calculator from '../components/jo'
+import Ibrowser from '../components/ibrowser'
+import Isoundcloud from '../components/isoundcloud'
 import { Rnd } from 'react-rnd'
 
 const showmenu = () =>{
@@ -77,6 +79,52 @@ export default function Home() {
           </div>
         </Rnd>
 
+        <Rnd
+          dragHandleclassName="handli"
+          default={{
+            x: 30,
+            y: 20,
+            width: 220,
+            height: 250,
+          }}
+        >
+          <div className="border-2 w-full h-full flex flex-col bg-blue-100">
+
+            <div className=" bg-gray-200 text-sm p-1 justify-between z-100 flex">
+              <div>Menu</div>
+              <div className="text-gray-500 handli">Notepad</div>
+              <div className="flex">
+                <div className="bg-yellow-300 w-4 h-4 rounded-full"></div>
+                <div onClick={blog} className="mx-2 bg-green-300 w-4 h-4 rounded-full"></div>
+                <div className="bg-red-300 w-4 h-4 rounded-full"></div>
+              </div>
+            </div>
+            <Ibrowser />
+          </div>
+        </Rnd>
+        <Rnd
+          dragHandleclassName="handli"
+          default={{
+            x: 30,
+            y: 20,
+            width: 220,
+            height: 250,
+          }}
+        >
+          <div className="border-2 w-full h-full flex flex-col bg-blue-100">
+
+            <div className=" bg-gray-200 text-sm p-1 justify-between z-100 flex">
+              <div>Menu</div>
+              <div className="text-gray-500 handli">Notepad</div>
+              <div className="flex">
+                <div className="bg-yellow-300 w-4 h-4 rounded-full"></div>
+                <div onClick={blog} className="mx-2 bg-green-300 w-4 h-4 rounded-full"></div>
+                <div className="bg-red-300 w-4 h-4 rounded-full"></div>
+              </div>
+            </div>
+            <Isoundcloud />
+          </div>
+        </Rnd>
       </main>
     </div>
   )
