@@ -1,33 +1,102 @@
 import React from 'react';
-import { Stack, Text, Link, FontWeights, IStackTokens, IStackStyles, ITextStyles } from '@fluentui/react';
-import logo from './logo.svg';
-import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
-import { ThemeProvider, PartialTheme, Depths, SharedColors,NeutralColors } from '@fluentui/react/lib/Theme';
+import { Stack } from '@fluentui/react';
+import { Nav, INavLink, INavStyles, INavLinkGroup } from '@fluentui/react/lib/Nav';
+import { ThemeProvider, SharedColors, NeutralColors } from '@fluentui/react/lib/Theme';
 
-export interface IButtonExampleProps {
-  // These are set based on the toggles shown above the examples (not needed in real code)
-  disabled?: boolean;
-  checked?: boolean;
-}
 
-const boldStyle: Partial<ITextStyles> = { root: { fontWeight: FontWeights.semibold } };
-const stackTokens: IStackTokens = { childrenGap: 15 };
-const stackStyles: Partial<IStackStyles> = {
+const navStyles: Partial<INavStyles> = {
   root: {
-    margin: '0 auto',
+    width: 208,
+    boxSizing: 'border-box',
+    overflowY: 'auto',
   },
 };
 
-export const App: React.FunctionComponent<IButtonExampleProps> = props => {
-  const { disabled, checked } = props;
+const navLinkGroups: INavLinkGroup[] = [
+  {
+    links: [
+      {
+        name: 'Home',
+        url: 'http://example.com',
+        expandAriaLabel: 'Expand Home section',
+        collapseAriaLabel: 'Collapse Home section',
+        links: [
+          {
+            name: 'Activity',
+            url: 'http://msn.com',
+            key: 'key1',
+            target: '_blank',
+          },
+          {
+            name: 'MSN',
+            url: 'http://msn.com',
+            disabled: true,
+            key: 'key2',
+            target: '_blank',
+          },
+        ],
+        isExpanded: true,
+      },
+      {
+        name: 'Documents',
+        url: 'http://example.com',
+        key: 'key3',
+        isExpanded: true,
+        target: '_blank',
+      },
+      {
+        name: 'Pages',
+        url: 'http://msn.com',
+        key: 'key4',
+        target: '_blank',
+      },
+      {
+        name: 'Notebook',
+        url: 'http://msn.com',
+        key: 'key5',
+        disabled: true,
+      },
+      {
+        name: 'Communication and Media',
+        url: 'http://msn.com',
+        key: 'key6',
+        target: '_blank',
+      },
+      {
+        name: 'News',
+        url: 'http://cnn.com',
+        icon: 'News',
+        key: 'key7',
+        target: '_blank',
+      },
+    ],
+  },
+];
+
+export const App: React.FunctionComponent = () => {
 
   return (
     <>
-        <div style={{backgroundColor:NeutralColors.black, color:NeutralColors.white}}>Hallo</div>
-        <Stack horizontal>
-          <div style={{width:200}}>Nav</div>
-          <div style={{backgroundColor:NeutralColors.black, width:'100%'}}>Main</div>
-</Stack>
+      <Stack horizontal verticalFill>
+        <Stack.Item verticalFill>
+          <Nav
+            onLinkClick={_onLinkClick}
+            selectedKey="key3"
+            ariaLabel="Nav basic example"
+            styles={navStyles}
+            groups={navLinkGroups}
+          />      </Stack.Item>
+        <Stack.Item grow verticalFill style={{ backgroundColor: NeutralColors.gray10}}>
+          <div >Main</div>
+        </Stack.Item>
+
+      </Stack>
     </>
   );
 };
+
+function _onLinkClick(ev?: React.MouseEvent<HTMLElement>, item?: INavLink) {
+  if (item && item.name === 'News') {
+    alert('News link clicked');
+  }
+}
